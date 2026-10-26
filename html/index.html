@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Smart Agriculture AI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #e8f5e9;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1b5e20;
+            border-bottom: 2px solid #c8e6c9;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .controls {
+            flex: 2;
+            min-width: 300px;
+        }
+        .results {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            background: #f1f8e9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+        .input-group label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2e7d32;
+        }
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #1b5e20;
+        }
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px dashed #4caf50;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d32f2f;
+            margin: 15px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Advance AI Fertilizer Recommendation</h1>
+        
+        <div class="dashboard">
+            <div class="controls">
+                
+                <div class="input-group">
+                    <label>Soil Type</label>
+                    <select id="soilType">
+                        <option value="Loamy">Loamy</option>
+                        <option value="Sandy">Sandy</option>
+                        <option value="Clay">Clay</option>
+                        <option value="Black">Black</option>
+                        <option value="Red">Red</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Crop Name</label>
+                    <select id="cropType">
+                        <option value="Rice">Rice</option>
+                        <option value="Maize">Maize</option>
+                        <option value="Sugarcane">Sugarcane</option>
+                        <option value="Cotton">Cotton</option>
+                        <option value="Wheat">Wheat</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Soil pH <span id="phVal">6.5</span></label>
+                    <input type="range" id="ph" min="1.0" max="14.0" step="0.1" value="6.5">
+                </div>
+
+                <div class="input-group">
+                    <label>Temperature (°C) <span id="tempVal">25</span></label>
+                    <input type="range" id="temp" min="10" max="50" value="25">
+                </div>
+
+                <div class="input-group">
+                    <label>Moisture (%) <span id="moistVal">50</span></label>
+                    <input type="range" id="moist" min="0" max="100" value="50">
+                </div>
+
+                <div class="input-group">
+                    <label>Nitrogen (N) <span id="nVal">40</span></label>
+                    <input type="range" id="n" min="0" max="150" value="40">
+                </div>
+
+                <div class="input-group">
+                    <label>Phosphorous (P) <span id="pVal">40</span></label>
+                    <input type="range" id="p" min="0" max="150" value="40">
+                </div>
+
+                <div class="input-group">
+                    <label>Potassium (K) <span id="kVal">40</span></label>
+                    <input type="range" id="k" min="0" max="150" value="40">
+                </div>
+
+                <button onclick="getPrediction()">Predict Best Fertilizer</button>
+            </div>
+
+            <div class="results">
+                <div class="card">
+                    <h3>Recommended Fertilizer</h3>
+                    <p id="fertResult">Waiting for data...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
